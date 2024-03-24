@@ -36,6 +36,10 @@ function printGrid(num) {
 
 function addSketch(row) {
     row.setAttribute('class', 'rows coloured');
+    let r = Math. floor(Math. random() * 256);
+    let g = Math. floor(Math. random() * 256);
+    let b = Math. floor(Math. random() * 256);
+    row.style.cssText = `background: rgb(${r} ${g} ${b})`;
 }
 
 function resetGrid() {
