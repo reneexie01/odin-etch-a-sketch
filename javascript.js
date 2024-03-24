@@ -1,6 +1,24 @@
 const container = document.querySelector('#container');
+const promptBtn = document.querySelector('#prompt');
 
-function generateGrid(num){
+promptBtn.addEventListener("click", () => requestGridSize());
+
+function requestGridSize() {
+    let num = prompt("Set the number of grids per side between 1-100:");
+    while (!isValidInput(num)) {
+        num = prompt("Invalid input. Set the number of grids per side between 1-100:");
+    }
+    printGrid(num);
+}
+
+function isValidInput(num) {
+    if (num > 0 && num < 101 && num % 1 === 0) {
+        return true;
+    }
+}
+
+function printGrid(num) {
+    resetGrid();
     for (let i = 0; i < num; i++) {
         const column = document.createElement("div");
         column.setAttribute('id', `column-${i}`);
@@ -20,4 +38,8 @@ function addSketch(row) {
     row.setAttribute('class', 'rows coloured');
 }
 
-generateGrid(16);
+function resetGrid() {
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+}
