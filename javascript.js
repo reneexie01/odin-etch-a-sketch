@@ -1,5 +1,6 @@
 const container = document.querySelector('#container');
 const promptBtn = document.querySelector('#prompt');
+let opacity = 0;
 
 promptBtn.addEventListener("click", () => requestGridSize());
 
@@ -39,7 +40,9 @@ function addSketch(row) {
     let r = Math. floor(Math. random() * 256);
     let g = Math. floor(Math. random() * 256);
     let b = Math. floor(Math. random() * 256);
-    row.style.cssText = `background: rgb(${r} ${g} ${b})`;
+    row.style.cssText = `background: rgb(${r} ${g} ${b}); opacity: ${opacity}`;
+    opacity += 0.1
+    console.log(opacity);
 }
 
 function resetGrid() {
